@@ -64,10 +64,17 @@ public class SeatStatus {
 	}
 	public int view_status(int status) {
 		if(status==1)
+		{
+			System.out.println("seat is already booked");
+		
 			return 1;
+		}
 		else 
+		{
+			System.out.println("not yet booked");
 			return 0;
-	}
+		}
+		}
 	
 
 }
