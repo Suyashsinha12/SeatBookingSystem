@@ -6,17 +6,34 @@ import javax.persistence.Id;
 
 @Entity
 public class Location {
+	
 	@Id
 	@GeneratedValue
-	String loc_name;
+	String location;
 	int code;
-	String off_name;
+	String office;
 	String country;
-	public String getLoc_name() {
-		return loc_name;
+	String floor;
+	
+	public Location() {
+		super();
+	
 	}
-	public void setLoc_name(String loc_name) {
-		this.loc_name = loc_name;
+	public Location(String location, int code, String office, String country, String floor) {
+		super();
+		this.location = location;
+		this.code = code;
+		this.office = office;
+		this.country = country;
+		this.floor = floor;
+	}
+	
+
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public int getCode() {
 		return code;
@@ -24,28 +41,24 @@ public class Location {
 	public void setCode(int code) {
 		this.code = code;
 	}
-	public String getOff_name() {
-		return off_name;
+	public String getOffice() {
+		return office;
 	}
-	public void setOff_name(String off_name) {
-		this.off_name = off_name;
+	public void setOffice(String office) {
+		this.office = office;
 	}
+	
 	public String getCountry() {
 		return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Location(String loc_name, int code, String off_name, String country) {
-		super();
-		this.loc_name = loc_name;
-		this.code = code;
-		this.off_name = off_name;
-		this.country = country;
+	public String getFloor() {
+		return floor;
 	}
-	public Location() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setFloor(String floor) {
+		this.floor = floor;
 	}
 	
 	@Override
@@ -54,8 +67,9 @@ public class Location {
 		int result = 1;
 		result = prime * result + code;
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + ((loc_name == null) ? 0 : loc_name.hashCode());
-		result = prime * result + ((off_name == null) ? 0 : off_name.hashCode());
+		result = prime * result + ((floor == null) ? 0 : floor.hashCode());
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((office == null) ? 0 : office.hashCode());
 		return result;
 	}
 	@Override
@@ -74,21 +88,27 @@ public class Location {
 				return false;
 		} else if (!country.equals(other.country))
 			return false;
-		if (loc_name == null) {
-			if (other.loc_name != null)
+		if (floor == null) {
+			if (other.floor != null)
 				return false;
-		} else if (!loc_name.equals(other.loc_name))
+		} else if (!floor.equals(other.floor))
 			return false;
-		if (off_name == null) {
-			if (other.off_name != null)
+		if (location == null) {
+			if (other.location != null)
 				return false;
-		} else if (!off_name.equals(other.off_name))
+		} else if (!location.equals(other.location))
+			return false;
+		if (office == null) {
+			if (other.office != null)
+				return false;
+		} else if (!office.equals(other.office))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Location [loc_name=" + loc_name + ", code=" + code + ", off_name=" + off_name + ", country=" + country
-				+ "]";
+		return "Location [location=" + location + ", code=" + code + ", office=" + office + ", country=" + country
+				+ ", floor=" + floor + "]";
 	}
+	
 }
