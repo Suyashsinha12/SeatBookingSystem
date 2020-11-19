@@ -5,57 +5,87 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Admin extends User{
+public class Admin {
 
-	@Id 
+	@Id
 	@GeneratedValue
-	private String adminKey;
+	private int adminId;
+	private String adminName;
+	private String adminPassword;
+	
+	public Admin() {
+		super();
 		
-		public Admin() {
-			super();
-		}
+	}
 
-		public Admin( String username, String password, String adminKey) {
-			super(username,password);
-			this.adminKey= adminKey;
-		}
+	public Admin(int adminId, String adminName, String adminPassword) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminPassword = adminPassword;
+	}
 
-		public String getAdminKey() {
-			return adminKey;
-		}
+	public int getAdminId() {
+		return adminId;
+	}
 
-		public void setAdminKey(String adminKey) {
-			this.adminKey = adminKey;
-		}
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
 
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((adminKey == null) ? 0 : adminKey.hashCode());
-			return result;
-		}
+	public String getAdminName() {
+		return adminName;
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Admin other = (Admin) obj;
-			if (adminKey == null) {
-				if (other.adminKey != null)
-					return false;
-			} else if (!adminKey.equals(other.adminKey))
-				return false;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
+	public String getAdminPassword() {
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + adminId;
+		result = prime * result + ((adminName == null) ? 0 : adminName.hashCode());
+		result = prime * result + ((adminPassword == null) ? 0 : adminPassword.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		}
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Admin other = (Admin) obj;
+		if (adminId != other.adminId)
+			return false;
+		if (adminName == null) {
+			if (other.adminName != null)
+				return false;
+		} else if (!adminName.equals(other.adminName))
+			return false;
+		if (adminPassword == null) {
+			if (other.adminPassword != null)
+				return false;
+		} else if (!adminPassword.equals(other.adminPassword))
+			return false;
+		return true;
+	}
 
-		@Override
-		public String toString() {
-			return "Admin [adminKey=" + adminKey + "]";
-		}
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
+	}
 		
 }
